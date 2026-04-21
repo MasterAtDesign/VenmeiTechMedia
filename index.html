@@ -647,6 +647,31 @@
             text-decoration: none;
         }
 
+        /* PDF Preview Modal */
+        #pdfPreviewModal .modal-fullscreen {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #pdfPreviewModal .modal-content {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            border-radius: 0;
+        }
+
+        #pdfPreviewModal .modal-body {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+        }
+
+        #pdfPreviewIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .contact-form {
             background: rgba(255, 255, 255, 0.96);
             border-radius: 28px;
@@ -1728,6 +1753,28 @@
           }
         );
     });
+
+  // PDF Preview Modal Handler
+  document.querySelectorAll('.pdf-preview-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      const pdfUrl = this.getAttribute('data-pdf-url');
+      const pdfTitle = this.getAttribute('data-pdf-title');
+      
+      const modalLabel = document.getElementById('pdfPreviewModalLabel');
+      const iframeElement = document.getElementById('pdfPreviewIframe');
+      const downloadLink = document.getElementById('pdfDownloadLink');
+      
+      if (modalLabel) modalLabel.textContent = pdfTitle || 'PDF Preview';
+      if (iframeElement) iframeElement.src = pdfUrl;
+      if (downloadLink) {
+        downloadLink.href = pdfUrl;
+        downloadLink.download = (pdfTitle || 'sample-work') + '.pdf';
+      }
+      
+      const modal = new bootstrap.Modal(document.getElementById('pdfPreviewModal'));
+      modal.show();
+    });
+  });
 </script>
 </body>
 </html>
