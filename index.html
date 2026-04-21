@@ -282,29 +282,69 @@
         }
 
         .mission-box, .vision-box {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            padding: 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            position: relative;
+            background: white;
+            padding: 2.5rem 2.25rem;
+            border-radius: 24px;
+            border: 1px solid rgba(37, 99, 235, 0.12);
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.08);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            overflow: hidden;
+        }
+
+        .mission-box::before,
+        .vision-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--secondary-color), var(--accent-color));
+            border-radius: 0 0 8px 0;
         }
 
         .mission-box:hover, .vision-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 28px 55px rgba(15, 23, 42, 0.12);
         }
 
         .mission-box h3, .vision-box h3 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--heading-color);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             display: flex;
             align-items: center;
+            gap: 0.75rem;
         }
 
         .mission-box h3 svg, .vision-box h3 svg {
-            margin-right: 15px;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(14, 165, 233, 0.15));
             color: var(--secondary-color);
+            flex-shrink: 0;
+        }
+
+        .mission-box p, .vision-box p {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.9;
+            margin-bottom: 0;
+        }
+
+        .mission-box .highlight,
+        .vision-box .highlight {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, 0.08);
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         /* Services Section */
@@ -1218,7 +1258,7 @@
             <div class="text-center mb-5">
                 <h2 class="section-title">Our Publishing Experience</h2>
                 <p class="section-subtitle">
-                    Trusted by 15+ Major Global Publishers
+                   Trusted by 15+ major global publishers, with over 18 years of industry experience.
                 </p>
             </div>
             
